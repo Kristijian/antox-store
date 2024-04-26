@@ -41,7 +41,7 @@
             "heading_size": "h1",
             "subheading": "Lorem ipsum dolor sitamet, consectetueradipiscing elit, seddiam nonummy nibheuismod tincidunt ut",
             "show_text_box": true,
-            "box_align": "middle-left",
+            "box_align": "bottom-left",
             "text_alignment": "center",
             "image_overlay_opacity": 0,
             "color_scheme": "background-1",
