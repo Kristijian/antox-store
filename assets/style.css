@@ -19,3 +19,37 @@ sticky-header {
     width: 75%;
     line-height: 4rem;
 }
+
+.list-menu .header__active-menu-item {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.header__menu-item:hover span {
+  text-decoration: none;
+}
+
+.header__icon > span {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.header__icon {
+  width: 100%;
+  text-decoration: none;
+}
+
+.header__icons {
+  width: 100%;
+}
+
+.header__icons .header__icon--cart {
+  width: 20%;
+}
+
+a.header__icon.header__icon--account.link.focus-inset.small-hide {
+  justify-content: flex-end;
+}
