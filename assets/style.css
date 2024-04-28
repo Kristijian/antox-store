@@ -60,3 +60,7 @@ sticky-header {
 a.header__icon.header__icon--account.link.focus-inset.small-hide {
   justify-content: flex-end;
 }
+
+.header__icon span {
+  width: 50px;
+}
