@@ -7,23 +7,27 @@ sticky-header {
     font-size: 92px;
     font-weight: 900;
     color: #fff;
-    width: 30%;
+    width: 300px;
     line-height: 8rem;
 }
 
 .slideshow-text__wrapper > .banner__text {
-  margin-top: 2rem;
-    font-size: 32px;
-    font-weight: bold;
-    color: #fff;
-    width: 75%;
-    line-height: 4rem;
+  margin-top: 5rem;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  width: 60%;
+  line-height: 4rem;
+}
+
+.slideshow-text__wrapper {
+  padding-left: 50px;
 }
 
 .list-menu .header__active-menu-item {
   color: #fff;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 15px;
   text-decoration: none;
 }
 
@@ -34,20 +38,23 @@ sticky-header {
 .header__icon > span {
   color: #fff;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.header__icons-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .header__icon {
-  width: 100%;
+  width: fit-content;
+  margin-left: 2rem;
   text-decoration: none;
 }
 
 .header__icons {
   width: 100%;
-}
-
-.header__icons .header__icon--cart {
-  width: 20%;
 }
 
 a.header__icon.header__icon--account.link.focus-inset.small-hide {
