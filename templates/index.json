@@ -6,7 +6,7 @@
         "slide_GNEGRY": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pink-lip-gloss.jpg",
+            "image": "shopify:\/\/shop_images\/background_image.jpg",
             "heading": "PER FOR MANCE",
             "heading_size": "h0",
             "subheading": "Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh euismod tincidunt utlaoreet dolore magna aliquam erat volutpat.",
@@ -20,6 +20,7 @@
         },
         "slide_cfgYpp": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/spa-supplies.jpg",
             "heading": "PER FOR MANCE",
@@ -35,6 +36,7 @@
         },
         "slide_8Gqd4k": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/category-bg-1.webp",
             "heading": "per for mance",
@@ -56,7 +58,7 @@
       ],
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "large",
+        "slide_height": "adapt_image",
         "slider_visual": "dots",
         "auto_rotate": true,
         "change_slides_speed": 7,

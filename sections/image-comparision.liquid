@@ -1,0 +1,142 @@
+{{ 'style.css' | asset_url | stylesheet_tag }}
+<div class="slideshow_text--wrapper">
+  {% if section.settings.header_text != blank %}
+    <h2 class="slider_text--head">{{ section.settings.header_text }}</h2>
+  {% endif %}
+  {% if section.settings.body_text != blank %}
+    <h2 class="slider_text--body">{{ section.settings.body_text }}</h2>
+  {% endif %}
+</div>
+<div
+  class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+  aria-live="polite"
+  data-autoplay="{{ section.settings.auto_rotate }}"
+  data-speed="{{ section.settings.change_slides_speed }}"
+>
+  <div id="inked-painted">
+    {% for block in section.blocks %}
+      {% if block.settings.image %}
+        {%- liquid
+          assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+          if section.settings.image_behavior == 'ambient'
+            assign sizes = '120vw'
+            assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+          else
+            assign sizes = '100vw'
+            assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+          endif
+          assign fetch_priority = 'auto'
+          if section.index == 1
+            assign fetch_priority = 'high'
+          endif
+        -%}
+        {%- if forloop.first %}
+          <img
+            class="image-content__image"
+            loading="lazy"
+            srcset="{{ block.settings.image | image_url: width: 3840 }}"
+            height="{{ height }}"
+            width="{{ widths }}"
+            sizes="{{ sizes }}"
+            id="inked"
+          >
+          {% comment %}
+            {{
+              block.settings.image
+              | image_url: width: 3840
+              | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+            }}
+          {% endcomment %}
+        {%- else -%}
+          <div id="colored" style="background-image: url({{ block.settings.image | image_url }})"></div>
+          {% comment %}
+            {{
+              block.settings.image
+              | image_url: width: 3840
+              | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+            }}
+          {% endcomment %}
+        {%- endif -%}
+      {% else %}
+        {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+        {%- if placeholder_slide == 1 -%}
+          {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- else -%}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "image-comparision",
+  "tag": "section",
+  "class": "image-comparsion",
+  "settings": [
+    {
+      "type": "select",
+      "id": "slide_height",
+      "options": [
+        {
+          "value": "adapt_image",
+          "label": "t:sections.slideshow.settings.slide_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.slideshow.settings.slide_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.slideshow.settings.slide_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.slideshow.settings.slide_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.slideshow.settings.slide_height.label"
+    },
+    {
+      "type": "richtext",
+      "id": "header_text",
+      "label": "Heading Text",
+      "default": "<p>per for mance</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Text",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Image",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "First Compare Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Comparision",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
